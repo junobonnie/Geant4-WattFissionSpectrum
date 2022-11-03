@@ -1,6 +1,5 @@
 # cf_252_neutron_source_gen.py
 from WattFissionSpectrum import WFS
-import matplotlib.pyplot as plt
 from random import random
 import math as m
 import sys
@@ -44,8 +43,5 @@ for i in range(num):
 /gun/direction %s %s %s
 /run/beamOn 1
 """ %(cf252.random(), vx, vy, vz)
-
-  plt.scatter(vx, vy)
-plt.show()
 
 print(result)
