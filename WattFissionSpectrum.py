@@ -14,7 +14,7 @@ class WFS:
     return np.random.choice(self.E, p=self.pdf)
 
 
-if __name__ == "__main_":
+if __name__ == "__main__":
   a = 1.18
   b = 1.03419
   min_E = 0
