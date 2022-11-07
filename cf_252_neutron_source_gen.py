@@ -6,12 +6,12 @@ import sys
 
 def random_uniform_cone(max_theta):
   u = random()
-  theta = max_theta * u
+  phi = 2*m.pi*u
   v = random()
-  phi = np.arccos(2*v-1)
+  theta = np.arccos(1-(1-np.cos(max_theta))*v)
   x   = np.sin(theta)*np.cos(phi)
   y   = np.sin(theta)*np.sin(phi)
-  z   = np.cos (theta)
+  z   = np.cos(theta)
   return x, y, z
 
 max_theta = int(sys.argv[1])
