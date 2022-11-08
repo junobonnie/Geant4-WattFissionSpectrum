@@ -63,13 +63,13 @@ void DetectorConstruction::ConstructSDandField()
 		for(G4int i =0; i < Maximum_E; i = i+E_bin){
 		// Filter
 		G4String results = particle[k];
-		std::sprintf(name, " %dMeV",i);
+		std::sprintf(name, " %dkeV",i);
 		G4String psName(name);
 		results += psName;
 		auto psPop = new G4PSPopulation(results);
 		auto filter = new G4SDParticleWithEnergyFilter("filter");
 		filter->add(particle[k]);
-		filter->SetKineticEnergy(i*MeV, (i+E_bin)*MeV);
+		filter->SetKineticEnergy(i*keV, (i+E_bin)*keV);
 		psPop->SetFilter(filter);
 		
 		mfd->RegisterPrimitive(psPop);
