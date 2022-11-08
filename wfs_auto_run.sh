@@ -59,8 +59,8 @@ echo "#ifndef CONFIGURE_HH
 #include <iostream>
 using namespace std;
 
-static const int Maximum_E = $energy;//MeV
-static const int E_bin = $energy_bin;//MeV
+static const int Maximum_E = $energy;//keV
+static const int E_bin = $energy_bin;//keV
 static const int event_end_num = $end_event_num;
     
 static const int particle_num = 10;
