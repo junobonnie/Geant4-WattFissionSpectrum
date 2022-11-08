@@ -14,19 +14,20 @@ def random_uniform_cone(max_theta):
   z   = np.cos(theta)
   return x, y, z
 
-max_theta = int(sys.argv[1])
-num = int(sys.argv[2])
+min_E = 0
+max_E = int(sys.argv[1])
+bins = int(sys.argv[2])
+num = int(sys.argv[3])
 
 a = 1.18
 b = 1.03419
-min_E = 0
-max_E = 10
-bins = 1000
-cf252 = WFS(a, b, min_E, max_E, bins)
+max_theta = m.pi/4
+
+wfs = WFS(a, b, min_E, max_E, bins)
 
 result = """
 # Can be run in batch, without graphic
-# or interactively: Idle> /control/execute run_cf252.mac
+# or interactively: Idle> /control/execute run_wfs.mac
 # Verbose
 /control/verbose 0
 /run/verbose 0
@@ -42,6 +43,6 @@ for i in range(num):
 /gun/position 0 0 -1.0 m
 /gun/direction %s %s %s
 /run/beamOn 1
-""" %(cf252.random(), vx, vy, vz)
+""" %(wfs.random(), vx, vy, vz)
 
 print(result)
