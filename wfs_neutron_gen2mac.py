@@ -16,8 +16,8 @@ def random_uniform_cone(max_theta):
   return x, y, z
 
 min_E = 0
-max_E = int(sys.argv[1])
-bins = int(sys.argv[2])
+max_E = int(sys.argv[1])/1000
+bins = int(int(sys.argv[1])/int(sys.argv[2]))
 num = int(sys.argv[3])
 
 wfs = WFS(a, b, min_E, max_E, bins)
