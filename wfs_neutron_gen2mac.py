@@ -1,5 +1,6 @@
 # cf_252_neutron_source_gen.py
 from WattFissionSpectrum import WFS
+from a, b, max_theta import wfs_config
 from random import random
 import math as m
 import sys
@@ -18,10 +19,6 @@ min_E = 0
 max_E = int(sys.argv[1])
 bins = int(sys.argv[2])
 num = int(sys.argv[3])
-
-a = 1.18
-b = 1.03419
-max_theta = m.pi/4
 
 wfs = WFS(a, b, min_E, max_E, bins)
 
