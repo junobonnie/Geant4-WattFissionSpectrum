@@ -1,8 +1,8 @@
 #!/bin/bash
 
 echo "														"
-echo "		G E A N T 4   A U T O - R U N					"
-echo "		Version 1.0    last modified 2022-06-10			"
+echo "		G E A N T 4   W F S - A U T O - R U N					"
+echo "		Version 1.0    last modified 2022-11-08			"
 echo "														"
 echo "		Copyright (C) 2022~								"
 echo "		Developed by Replica							"
@@ -15,30 +15,30 @@ printf "\033[31m<< 1. Set Parameters >>\033[0m\n\n"
 if [ ${1:-'mode1'} == 'mode2' ]; then
 	printf '\033[32m[mode2]\033[0m\n\n'
 	name=$2
-	echo "Set particle name : $name"
+	echo "Set radionuclide name : $name"
 	echo ""
 	energy=$3
-	echo "Set particle energy(MeV) : $energy"
+	echo "Set maximum neutron energy(keV) : $energy"
 	echo ""
 	energy_bin=$4
-	echo "Set energy bin(MeV) : $energy_bin"
+	echo "Set energy bin(keV) : $energy_bin"
 	echo ""
 	end_event_num=$5
 	echo "Set total number of events : $end_event_num"
 	echo ""
 else
 	printf '\033[32m[mode1]\033[0m\n\n'
-	echo "Set particle name : "
+	echo "Set radionuclide name : "
 	printf ">>> "
 	read name
 	echo ""
 
-	echo "Set particle energy(MeV) : "
+	echo "Set maximum neutron energy(keV) : "
 	printf ">>> "
 	read energy
 	echo ""
 
-	echo "Set energy bin(MeV) : "
+	echo "Set energy bin(keV) : "
 	printf ">>> "
 	read energy_bin
 	echo ""
@@ -49,23 +49,9 @@ else
 	echo ""
 fi
 
-echo "# Can be run in batch, without graphic
-# or interactively: Idle> /control/execute run.mac
+python3 wfs_neutron_gen2mac.py > run_wfs.mac
 
-# Verbose
-/control/verbose 0
-/run/verbose 0
-/event/verbose 0
-/tracking/verbose 0
-
-# AUTO-RUN
-/gun/particle $name
-/gun/position 0 0 -5 m
-/gun/energy $energy MeV
-
-/run/beamOn $end_event_num" > run.mac
-
-echo "Make run.mac"
+echo "Make run_wfs.mac"
 
 echo "#ifndef CONFIGURE_HH
 #define CONFIGURE_HH
@@ -91,11 +77,11 @@ make -j12
 printf "\n\033[31m<< 3. Start Simulation >>\033[0m\n\n"
 output_root_dir="results"
 mkdir -p $output_root_dir
-output_dir=$output_root_dir"/"$name"_"$energy"MeV_"$energy_bin"MeV_"$end_event_num"event_"$(date +%Y-%m-%d-%T)
+output_dir=$output_root_dir"/"$name"_"$energy"keV_"$energy_bin"keV_"$end_event_num"event_"$(date +%Y-%m-%d-%T)
 mkdir -p $output_dir
 filename=$output_dir"/raw_result.out"
 echo "Simulation running..."
-./g4_minimal run.mac > $filename
+./g4_minimal run_wfs.mac > $filename
 echo "Output file is $filename"
 
 printf "\n\033[31m<< 4. Draw Plots >>\033[0m\n\n"
