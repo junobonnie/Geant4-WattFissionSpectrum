@@ -66,29 +66,6 @@ else
         echo ""
 fi
 
-echo "returnNeutrons 0
-returnProtons 0
-returnGammas 0
-returnElectrons 0
-returnMuons 0
-returnPions 0
-returnKaons 0
-date $set_date
-latitude $latitude
-altitude $altitude
-subboxLength 5
-" > temp
-
-awk '/'"$name"'/{$2="1"}1' temp > setup.file
-rm temp
-
-echo "Make setup.file"
-ln -s $CRY_TEST_DIR/data .
-$CRY_TEST_DIR/testOut setup.file $end_event_num
-#mv $CRY_TEST_DIR/shower.out .
-
-echo "Make $CRY_TEST_DIR/shower.out"
-
 python3 cry2mac.py > run_cry.mac
 
 echo "Make run_cry.mac"
