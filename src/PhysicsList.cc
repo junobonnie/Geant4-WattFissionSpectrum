@@ -15,14 +15,8 @@ PhysicsList::PhysicsList()
   // Default physics
   RegisterPhysics(new G4DecayPhysics());
 
-  // EM physics
-  RegisterPhysics(new G4EmStandardPhysics_option4());
-
   // Radioactive decay
   RegisterPhysics(new G4RadioactiveDecayPhysics());
-  
-  // Ion Binary Cascade
-  RegisterPhysics(new G4IonBinaryCascadePhysics());
   
   // Hadron Physics high precision
   RegisterPhysics(new G4HadronPhysicsQGSP_BIC_HP());
