@@ -35,10 +35,11 @@ target_link_libraries(g4_minimal ${Geant4_LIBRARIES})
 #
 set(SCRIPTS
   vis.mac
-  auto_run.sh
-  cry_auto_run.sh
+  wfs_auto_run.sh
   plot.py
-  cry2mac.py
+  WattFissionSpectrum.py
+  wfs_neutron_gen2mac.py
+  wfs_config.py
   )
 
 foreach(_script ${SCRIPTS})
