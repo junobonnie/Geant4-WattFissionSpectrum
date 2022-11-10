@@ -4,8 +4,8 @@
 #include <iostream>
 using namespace std;
 
-static const int Maximum_E = 1000;//MeV
-static const int E_bin = 10;//MeV
+static const int Maximum_E = 1000;//keV
+static const int E_bin = 10;//keV
 static const int event_end_num = 100000;
     
 static const int particle_num = 10;
