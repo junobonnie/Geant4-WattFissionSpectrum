@@ -7,9 +7,7 @@
 ///
 /// It includes the folowing physics builders
 /// - G4DecayPhysics
-/// - G4RadioactiveDecayPhysics_option4
-/// - G4EmStandardPhysics
-/// - G4IonBinaryCascadePhysics
+/// - G4RadioactiveDecayPhysics
 /// - G4HadronPhysicsQGSP_BIC_HP
 
 class PhysicsList: public G4VModularPhysicsList
